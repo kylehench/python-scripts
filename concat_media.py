@@ -1,6 +1,7 @@
 import argparse, os
 
 EXTENSION = '.mp3'
+TESTING = True
 
 # parse shell arguments
 parser = argparse.ArgumentParser()
@@ -41,6 +42,9 @@ for dirpath, dirnames, filenames in os.walk(input_dir):
     if media_present:
         output_file = os.path.basename(dirpath) + EXTENSION
         output_path = os.path.join(dest_subdir, output_file)
-        os.system(f'ffmpeg -f concat -safe 0 -i "{media_list}" -c copy "{output_path}"')
+        if not TESTING:
+            os.system(f'ffmpeg -f concat -safe 0 -i "{media_list}" -c copy "{output_path}"')
+        else:
+            print(output_path)
 
     os.remove(media_list)

@@ -1,7 +1,7 @@
 import argparse, os
 
 EXTENSION = '.mp3'
-TESTING = False
+TESTING = True
 
 # parse shell arguments
 parser = argparse.ArgumentParser()
